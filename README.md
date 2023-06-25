@@ -1,14 +1,9 @@
 # Jsons.ahk-for-AHKv2
-
-### Forked from https://github.com/TheArkive/JXON_ahk2
-
 The lazy man's json. Inspired by: https://pypi.org/project/jsons/
 
+Forked from TheArkive https://github.com/TheArkive/JXON_ahk2
+
 This is a normal Json library, with a built in function to convert Objects to Maps. Feed anything into Dump, and it should return a proper serialized string. 
-
-For a detailed read me, visit the creators page:
-
-https://github.com/TheArkive/JXON_ahk2/edit/master/README.md
 
 # Use
 
@@ -17,7 +12,7 @@ Serialize
 var := Jsons.Dump(obj, indent:=0)
 ```
 
-Convert to map 
+Convert to obj
 ```autohotkey
 obj := Jsons.Load(&text)
 ```
