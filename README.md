@@ -17,7 +17,7 @@ Convert to obj
 obj := Jsons.Load(&text)
 ```
 
-In the future, I'll look to try to convert to objects a la https://github.com/Jim-VxE/AHK-Lib-JSON_ToObj
+In the future, I'll try to convert to objects a la https://github.com/Jim-VxE/AHK-Lib-JSON_ToObj
 
 test input:
 ```autohotkey
