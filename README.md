@@ -26,15 +26,17 @@ In the future, I'll look to try to convert to objects a la https://github.com/Ji
 
 test input:
 ```autohotkey
-        y:={1:2}
-        x := {
-            1: 2,
-            4: [1, y],
-            z: Map(1,2),
-            2:y,
-            y:2
-        }
-        B:=Map("test", {y:x})
+y:={1:2}
+x := {
+    1: 2,
+    4: [1, y],
+    z: Map(1,2),
+    2:y,
+    y:2
+}
+B := Map("test", {y:x})
+Jsons.Dump(B, indent:=2)
+
 ```
 
 output:
