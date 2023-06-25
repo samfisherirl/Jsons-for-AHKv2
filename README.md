@@ -17,5 +17,5 @@ var := Jsons.Dump(obj, indent:=0)
 
 Convert to map (and in the future, I'll look to try to convert to objects)
 ```autohotkey
-obj := jxon_load(&text)
+obj := Jsons.Load(&text)
 ```
