@@ -155,6 +155,11 @@ class Jsons {
         if IsObject(obj) {
             if obj.__Class = "Object" {
                 obj := Jsons.convertObj(obj)
+            } else if not (obj is Array || obj is Map || obj is String || obj is Number) && obj.base.__New {
+                obj := Jsons.convertObj(obj)
+            }
+            if obj.__Class = "Test" {
+                x := obj.base
             }
             If !(obj is Array || obj is Map || obj is String || obj is Number)
                 throw Error("Object type not supported.", -1, Format("<Object at 0x{:p}>", ObjPtr(obj)))
@@ -219,19 +224,12 @@ class Jsons {
                 return InputObject
             }
             else {
-                return Jsons.Convert(InputObject)
+                return Jsons.convertObj(InputObject)
             }
         }
         else {
             return InputObject
         }
-    }
-    static Convert(obj) {
-        convertedObject := Map()
-        for k, v in obj.OwnProps() {
-            convertedObject.Set(k, v)
-        }
-        return convertedObject
     }
     static convertObj(obj) {
         convertedObject := Map()
