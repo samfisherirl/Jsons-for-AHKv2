@@ -8,32 +8,13 @@
 ; Example ===================================================================================
 ; ===========================================================================================
 
-; Msgbox "The idea here is to create several nested arrays, save to text with jxon_dump(), and then reload the array with jxon_load().  The resulting array should be the same.`r`n`r`nThis is what this example shows."
-; a := Map(), b := Map(), c := Map(), d := Map(), e := Map(), f := Map() ; Object() is more technically correct than {} but both will work.
+Serialize
 
-; d["g"] := 1, d["h"] := 2, d["i"] := ["purple","pink","pippy red"]
-; e["g"] := 1, e["h"] := 2, e["i"] := Map("1","test1","2","test2","3","test3")
-; f["g"] := 1, f["h"] := 2, f["i"] := [1,2,Map("a",1.0009,"b",2.0003,"c",3.0001)]
+var := Jsons.Dump(obj, indent:=0)
 
-; a["test1"] := "test11", a["d"] := d
-; b["test3"] := "test33", b["e"] := e
-; c["test5"] := "test55", c["f"] := f
+Convert to obj
 
-; myObj := Map()
-; myObj["a"] := a, myObj["b"] := b, myObj["c"] := c, myObj["test7"] := "test77", myObj["test8"] := "test88"
-
-; g := ["blue","green","red"], myObj["h"] := g ; add linear array for testing
-
-; q := Chr(34)
-; textData2 := Jxon_dump(myObj,4) ; ===> convert array to JSON
-; msgbox "JSON output text:`r`n===========================================`r`n(Should match second output.)`r`n`r`n" textData2
-
-; newObj := Jxon_load(&textData2) ; ===> convert json back to array
-
-; textData3 := Jxon_dump(newObj,4) ; ===> break down array into 2D layout again, should be identical
-; msgbox "Second output text:`r`n===========================================`r`n(should be identical to first output)`r`n`r`n" textData3
-
-; msgbox "textData2 = textData3:  " ((textData2=textData3) ? "true" : "false")
+obj := Jsons.Load(&text)
 
 ; ===========================================================================================
 ; End Example ; =============================================================================
