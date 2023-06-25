@@ -1,4 +1,4 @@
-# Jsons.ahk-for-AHKv2
+# Jsons.ahk for AHKv2
 The lazy man's json. Inspired by: https://pypi.org/project/jsons/
 
 Forked from TheArkive https://github.com/TheArkive/JXON_ahk2
