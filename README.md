@@ -26,19 +26,28 @@ In the future, I'll look to try to convert to objects a la https://github.com/Ji
 
 test input:
 ```autohotkey
-y := {1:2}
-B := Map("test", {y:"x"})
-x := {
-    1: 2,
-    4: [1, y],
-    z: Map(1,2),
-    2:y,
-    y:B
-}
-jdata := Jsons.Dump(x, indent:=2)
-FileAppend(jdata, "1.json")
-MsgBox(jdata)
-
+        #Include JSONS.ahk
+        class Test
+        {
+            __New(){
+                this.valA := "valA"
+                this.valB := "valB"
+            }
+        }
+        ClassObj := Test()
+        y := {1:2}
+        B := Map("test", {y:"x"})
+        x := {
+            test: ClassObj,
+            1: 2,
+            4: [1, ClassObj],
+            z: Map(1,2),
+            ClassObj:y,
+            y:B
+        }
+        jdata := Jsons.Dump(x, indent:=2)
+        FileAppend(jdata, "1.json")
+        MsgBox(jdata)
 ```
 
 output:
@@ -46,15 +55,20 @@ output:
 ```json
 {
   "1": 2,
-  "2": {
-    "1": 2
-  },
   "4": [
     1,
     {
-      "1": 2
+      "valA": "valA",
+      "valB": "valB"
     }
   ],
+  "ClassObj": {
+    "1": 2
+  },
+  "test": {
+    "valA": "valA",
+    "valB": "valB"
+  },
   "y": {
     "test": {
       "y": "x"
