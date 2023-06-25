@@ -158,9 +158,6 @@ class Jsons {
             } else if not (obj is Array || obj is Map || obj is String || obj is Number) && obj.base.__New {
                 obj := Jsons.convertObj(obj)
             }
-            if obj.__Class = "Test" {
-                x := obj.base
-            }
             If !(obj is Array || obj is Map || obj is String || obj is Number)
                 throw Error("Object type not supported.", -1, Format("<Object at 0x{:p}>", ObjPtr(obj)))
 
