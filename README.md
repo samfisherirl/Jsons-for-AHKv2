@@ -17,7 +17,9 @@ Serialize
 var := Jsons.Dump(obj, indent:=0)
 ```
 
-Convert to map (and in the future, I'll look to try to convert to objects a la https://github.com/Jim-VxE/AHK-Lib-JSON_ToObj)
+Convert to map 
 ```autohotkey
 obj := Jsons.Load(&text)
 ```
+
+In the future, I'll look to try to convert to objects a la https://github.com/Jim-VxE/AHK-Lib-JSON_ToObj
