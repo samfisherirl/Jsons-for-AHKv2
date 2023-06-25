@@ -1,8 +1,10 @@
 # Jsons.ahk-for-AHKv2
 
-### forked from https://github.com/TheArkive/JXON_ahk2
+### Forked from https://github.com/TheArkive/JXON_ahk2
 
-The lazy man's json. Inspired by python's Jsons found on pypi. It takes objects, and converts to maps. 
+The lazy man's json. Inspired by: https://pypi.org/project/jsons/
+
+This is a normal Json library, with a built in function to convert Objects to Maps. Feed anything into Dump, and it should return a proper serialized string. 
 
 For a detailed read me, visit the creators page:
 
