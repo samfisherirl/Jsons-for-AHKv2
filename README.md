@@ -23,3 +23,42 @@ obj := Jsons.Load(&text)
 ```
 
 In the future, I'll look to try to convert to objects a la https://github.com/Jim-VxE/AHK-Lib-JSON_ToObj
+
+test input:
+```autohotkey
+        y:={1:2}
+        x := {
+            1: 2,
+            4: [1, y],
+            z: Map(1,2),
+            2:y,
+            y:2
+        }
+        B:=Map("test", {y:x})
+```
+
+output:
+
+```json
+{
+  "test": {
+    "y": {
+      "1": 2,
+      "2": {
+        "1": 2
+      },
+      "4": [
+        1,
+        {
+          "1": 2
+        }
+      ],
+      "y": 2,
+      "z": {
+        "1": 2
+      }
+    }
+  }
+}
+
+```
