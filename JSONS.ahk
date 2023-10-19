@@ -137,9 +137,9 @@ class Jsons {
     static Dump(obj, indent := "", lvl := 1) {
         if IsObject(obj) {
             if obj.__Class = "Object" {
-                obj := Jsons.convertObj(obj)
-            } else if not (obj is Array || obj is Map || obj is String || obj is Number) && obj.base.__New {
-                obj := Jsons.convertObj(obj)
+                obj := Jsons.ConvertObjectToMap(obj)
+            } else if not (obj is Array || obj is Map || obj is String || obj is Number) && obj.__Class != "BoundaryFunc"  {
+                obj := Jsons.ConvertObjectToMap(obj)
             }
             If !(obj is Array || obj is Map || obj is String || obj is Number)
                 throw Error("Object type not supported.", -1, Format("<Object at 0x{:p}>", ObjPtr(obj)))
@@ -165,7 +165,7 @@ class Jsons {
                 ; if IsObject(k) || (k == "")
                     ;  throw Error("Invalid object key.", -1, k ? Format("<Object at 0x{:p}>", ObjPtr(obj)) : "<blank>")
 
-                if !is_array ;// key ; ObjGetCapacity([k], 1)
+                if !is_array  ;// key ; ObjGetCapacity([k], 1)
                     out .= (ObjGetCapacity([k]) ? Jsons.Dump(k) : escape_str(k)) (indent ? ": " : ":") ; token + padding
 
                 out .= Jsons.Dump(v, indent, lvl) ; value
@@ -214,7 +214,9 @@ class Jsons {
     static convertObj(obj) {
         convertedObject := Map()
         for k, v in obj.OwnProps() {
+            if v.base.__Class != "BoundFunc" {
             convertedObject.Set(k, v)
+        }
         }
         return convertedObject
     }
