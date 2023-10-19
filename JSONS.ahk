@@ -1,3 +1,4 @@
+/*
 ;;;; AHK v2 - https://github.com/TheArkive/JXON_ahk2
 ;MIT License
 ;Copyright (c) 2021 TheArkive
@@ -22,6 +23,7 @@ obj := Jsons.Load(&text)
 
 ; originally posted by user coco on AutoHotkey.com
 ; https://github.com/cocobelgica/AutoHotkey-JSON
+*/
 class Jsons {
 
     static Load(&src, args*) {
